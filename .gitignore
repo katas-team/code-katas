@@ -1,0 +1,9 @@
+node_modules/
+npm-debug.log
+.DS_Store
+.settings/
+.project
+npm-shrinkwrap.json
+*~
+.vscode
+jsconfig.json
