@@ -9,3 +9,4 @@
 - Ordenar los valores de un array de menor a mayor
 - Dado un array con elementos, y un elemento, introducirlo de dejando ordenado el array
 - Comprobar si un string es un anagrama
+- Transformar números árabes en números romanos
