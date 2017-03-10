@@ -1,61 +1,59 @@
 module.exports = function (number) {
-  if (typeof number === 'number') {
-    const SIMPLE_ROMANS = {
-      1: 'I',
-      5: 'V',
-      10: 'X',
-      50: 'L',
-      100: 'C',
-      500: 'D',
-      1000: 'M'
-    };
+  if (! Number.isSafeInteger(number) && number > 0) return undefined;
 
-    if (SIMPLE_ROMANS[number]) return SIMPLE_ROMANS[number];
+  const BASIC_ROMANS = {
+    1: 'I',
+    5: 'V',
+    10: 'X',
+    50: 'L',
+    100: 'C',
+    500: 'D',
+    1000: 'M'
+  };
 
-    var numbers = factorize({number: number, factors: [1000, 100, 10, 1]});
+  if (BASIC_ROMANS[number]) return BASIC_ROMANS[number];
 
-    numbers = numbers.map(function (number) {
-      return SIMPLE_ROMANS[number];
-    });
+  var numbers = factorize({ number: number, factors: [1000, 100, 10, 1] });
+  
+  var parts = numbers.map(function (number) {
+    return BASIC_ROMANS[number];
+  });
 
-    return numbers.join('');
-  }
+  return parts.join('');
 };
 
-function factorize({number, factors}) {
-  const EXCEPT_ROMANS = {
-    5: 'V',
-    50: 'L',
-    500: 'D'
-  };
-  const EXCEPT_FACTORS = [500, 50 , 5 , 0];
-  var _number = number;
+function factorize({ number, factors }) {
+  var half_factors = [500, 50, 5, 0];
   var numbers = [];
+  var num = number;
 
-  factors.forEach(function (factor, i, arr) {
-    var loop = Math.floor(_number / factor);
+  factors.forEach(function (factor, i) {
+    var loop = Math.floor(num / factor);
+    var half_factor = half_factors[i];
+    var ten_percent_less = factor / 10;
 
     if (loop < 4 || factor === 1000) {
       for (var j = 0; j < loop; ++j) {
         numbers.push(factor);
-        _number -= factor;
+        num -= factor;
       }
     }
 
-    var mod = Math.floor(_number % EXCEPT_FACTORS[i]);
+    var mod = Math.floor(num % half_factor);
 
-    if (_number === mod && _number >= (EXCEPT_FACTORS[i] - (factor / 10))) {
-      numbers.push((factor / 10), EXCEPT_FACTORS[i]);
-      _number -= EXCEPT_FACTORS[i] - (factor / 10);
+    if (num === mod && num >= (half_factor - ten_percent_less)) {
+      numbers.push(ten_percent_less, half_factor);
+      num -= half_factor - ten_percent_less;
     }
-    if (mod < _number && mod >= (EXCEPT_FACTORS[i] - (factor / 10)) && mod >= (EXCEPT_FACTORS[i] - 2 * (factor / 10))) {
-      numbers.push((factor / 10), factor);
-      _number -= factor - (factor / 10);
-      mod = _number;
-    }
-    if (mod < _number) {
-      numbers.push(EXCEPT_FACTORS[i]);
-      _number -= EXCEPT_FACTORS[i];
+
+    if (mod < num) {
+      if (mod >= (half_factor - (2 * ten_percent_less))) {
+        numbers.push(ten_percent_less, factor);
+        num -= factor - ten_percent_less;
+      } else {
+        numbers.push(half_factor);
+        num -= half_factor;
+      }
     }
   });
 
