@@ -10,3 +10,8 @@
 >
 >   [Dave Thomas](http://codekata.com)
 
+# Terminados
+- 
+
+# Actuales 
+- Transformar números árabes en números romanos

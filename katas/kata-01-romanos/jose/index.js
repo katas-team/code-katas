@@ -1,0 +1,1 @@
+// Si estoy leyendo esto, es porque soy un vago y aun no he picado codigo, o no he pusheado >_>
