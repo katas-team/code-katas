@@ -1,12 +1,9 @@
 - Los 'n' primeros numeros primos
-- La suma de los numeros pares entre los numeros 'a' y 'b' dado
 - Leer 'n' valores, e indique cual es el maximo y el minimo.
 - Calcular el minimo comun multiplo
 - Leer los valores 'a' 'b' y 'c' que representan una ecuacion de segundo grado (ax^2 + bx + c), y te devuelva los resultados de la ecuacion
 - Calcular el numero de dias que han pasado entre dos fechas dadas
-- Traducir de un numero romano a numero decimal
 - Invertir los valores de un array
 - Ordenar los valores de un array de menor a mayor
 - Dado un array con elementos, y un elemento, introducirlo de dejando ordenado el array
-- Comprobar si un string es un anagrama
-- Transformar números árabes en números romanos
+- Buscar un valor dado dentro de un array y devolver su posición. Realizar cinco aproximaciones distintas de búaqueda binaria. 
