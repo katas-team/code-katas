@@ -11,7 +11,7 @@
 >   [Dave Thomas](http://codekata.com)
 
 # Terminados
-- 
+- Transformar números árabes en números romanos
 
 # Actuales 
-- Transformar números árabes en números romanos
+- Buscar un valor dado dentro de un array y devolver su posición. Realizar cinco aproximaciones distintas de búaqueda binaria. 
