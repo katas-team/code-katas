@@ -3,6 +3,7 @@ const assert = require('assert')
 const iterativa = require('../../katas/kata-02-busqueda_binaria/rodrigo/iterativa')
 const recursiva = require('../../katas/kata-02-busqueda_binaria/rodrigo/recursiva')
 const promesa = require('../../katas/kata-02-busqueda_binaria/rodrigo/promesa')
+const async_await = require('../../katas/kata-02-busqueda_binaria/rodrigo/async_await')
 
 describe('rodrigo búsqueda iterativa', function () {
   it('Returns -1', () => assert.equal(-1, iterativa(3, [])))
@@ -36,69 +37,78 @@ describe('rodrigo búsqueda recursiva', function () {
 
 describe('rodrigo búsqueda promesa recursiva', function () {
   it('Returns -1', function (done) {
-    new promesa(3,[]).then(function (position) {
+    promesa(3,[]).then(function (position) {
       assert.equal(-1, position)
       done()
     })
   })
   it('Returns -1', function (done) {
-    new promesa(3, [1]).then(function(position) {
+    promesa(3, [1]).then(function(position) {
       assert.equal(-1, position)
       done()
     })
   })
   it('Returns 0', function (done) {
-    new promesa(1, [1]).then(function(position) {
+    promesa(1, [1]).then(function(position) {
       assert.equal(0, position)
       done()
     })
   })
 
   it('Returns 0', function (done) {
-    new promesa(1, [1, 3, 5]).then(function (position) {
+    promesa(1, [1, 3, 5]).then(function (position) {
       assert.equal(0, position)
       done()
     })
   })
   it('Returns 1', function (done) {
-    new promesa(3, [1, 3, 5]).then(function (position) {
+    promesa(3, [1, 3, 5]).then(function (position) {
       assert.equal(1, position)
       done()
     })
   })
   it('Returns 2', function (done) {
-    new promesa(5, [1, 3, 5]).then(function (position) {
+    promesa(5, [1, 3, 5]).then(function (position) {
       assert.equal(2, position)
       done()
     })
   })
   it('Returns -1', function (done) {
-    new promesa(0, [1, 3, 5]).then(function (position) {
+    promesa(0, [1, 3, 5]).then(function (position) {
       assert.equal(-1, position)
       done()
     })
   })
   it('Returns -1', function (done) {
-    new promesa(2, [1, 3, 5]).then(function (position) {
+    promesa(2, [1, 3, 5]).then(function (position) {
       assert.equal(-1, position)
       done()      
     })
   })
   it('Returns -1', function (done) {
-    new promesa(4, [1, 3, 5]).then(function (position) {
+    promesa(4, [1, 3, 5]).then(function (position) {
       assert.equal(-1, position)
       done()
     })
   })
   it('Returns -1', function (done) {
-    new promesa(6, [1, 3, 5]).then(function (position) {
+    promesa(6, [1, 3, 5]).then(function (position) {
       assert.equal(-1, position)
       done()
     })
   })
   it('Returns 4', function (done) {
-    new promesa(10, [1, 3, 5, 7, 10, 20, 40]).then(function (position) {
+    promesa(10, [1, 3, 5, 7, 10, 20, 40]).then(function (position) {
       assert.equal(4, position)
+      done()
+    })
+  })
+})
+
+describe('rodrigo búsqueda async-await', function () {
+  it('Returns -1', function (done) {
+    async_await(3, []).then(function (position){
+      assert.equal(-1, position)
       done()
     })
   })
