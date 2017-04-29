@@ -16,30 +16,63 @@ var obj = {
 				return m+1;
 			}
 		}else{
-			return 0;
+			return -1;
 		} 		
  	},
 
-	// Con while
+	// Iterativo con while
 	dos: function(x) {
-		var encontrado = false;
 		var m = 0;
 		var izq = 0;
 		var der = v.length-1;
-		while (!encontrado){
+		while (izq <= der){
 			m = Math.round(((der-izq)/2) + izq);
 			if (x < v[m]){
 				der = m-1;
 			} else if (x > v[m]) {
 				izq = m+1;
 			} else {
-				encontrado = true;
-			}
-			if(izq > der){
-				return 0;
+				return m+1;
 			}
 		}
-		return m+1;
+		return -1;
+	},
+
+	// Promesas nativas ES6
+	tres: function(x) {
+		var izq = 0;
+		var der = v.length-1;		
+
+		var miPromesa = new Promise((resolve, reject) => {	
+			if(izq > der){
+				resolve(-1);
+			} 
+			var m = Math.round(((der-izq)/2) + izq);
+			if (x == v[m]) {
+				resolve(m+1);  
+			} else if (x < v[m]){
+				der = m-1;
+				reject("menor");  
+			} else if (x > v[m]){
+				izq = m+1;
+				reject("mayor");  
+			}
+		});
+
+		miPromesa.then(
+			(resul) => {
+				return resul;
+			},
+			(error) => {
+				return 11;				
+			}
+		); 
+
+		return miPromesa;
+	},
+
+	// Async Await
+	cuatro: function(x) {
 	}
 }
 
