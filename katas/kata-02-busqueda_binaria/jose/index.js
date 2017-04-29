@@ -40,9 +40,6 @@ var obj = {
 
 	// Promesas nativas ES6
 	tres: function(x) {
-		var izq = 0;
-		var der = v.length-1;		
-
 		var miPromesa = new Promise((resolve, reject) => {	
 			var result = obj.unoR(0, v.length-1, x);
 			return resolve(result);
@@ -55,7 +52,9 @@ var obj = {
 	},
 
 	// Async Await
-	cuatro: function(x) {
+	cuatro: async function(x) {
+		var result = obj.tres(x);
+		return await result;
 	}
 }
 
