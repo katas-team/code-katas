@@ -44,31 +44,14 @@ var obj = {
 		var der = v.length-1;		
 
 		var miPromesa = new Promise((resolve, reject) => {	
-			if(izq > der){
-				resolve(-1);
-			} 
-			var m = Math.round(((der-izq)/2) + izq);
-			if (x == v[m]) {
-				resolve(m+1);  
-			} else if (x < v[m]){
-				der = m-1;
-				reject("menor");  
-			} else if (x > v[m]){
-				izq = m+1;
-				reject("mayor");  
-			}
+			var result = obj.unoR(0, v.length-1, x);
+			return resolve(result);
 		});
-
 		miPromesa.then(
 			(resul) => {
 				return resul;
-			},
-			(error) => {
-				return 11;				
 			}
 		); 
-
-		return miPromesa;
 	},
 
 	// Async Await
